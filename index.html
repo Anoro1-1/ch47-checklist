@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CH-47 F Chinook — Startup Checklist</title>
+<title>CH-47F Chinook — Startup Checklist</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -86,7 +86,7 @@
   <div class="header-left">
     <div class="heli-icon">&#x1F681;</div>
     <div>
-      <div class="header-title">CH-47 F CHINOOK</div>
+      <div class="header-title">CH-47F CHINOOK</div>
       <div class="header-sub">DCS World &middot; Startup Checklist</div>
     </div>
   </div>
@@ -109,7 +109,6 @@
 </main>
 
 <script>
-// Exakt nach CH-47F_Checklist_Startup Dokument
 const phases = [
   {
     id: "p1", name: "Vorbereitung",
@@ -135,7 +134,7 @@ const phases = [
         ]
       },
       {
-        loc: "Overhead Console / Left", name: "ELEC",
+        loc: "Overhead Console / Left", name: "ELEC \u2014 Battery",
         items: [
           { l: "BATT Switch", a: "ON" },
           { l: "UTIL PRES LIGHT", a: "VERIFY ON", v: true }
@@ -150,16 +149,17 @@ const phases = [
     ]
   },
   {
-    id: "p2", name: "APU / Controls",
+    id: "p2", name: "APU Start",
     sections: [
       {
-        loc: "Overhead Console / Left", name: "ELEC — APU",
+        loc: "Overhead Console / Left", name: "ELEC \u2014 APU",
         items: [
-          { l: "APU RUN", a: "5 SECONDS" },
-          { l: "APU START", a: "2 SECONDS", s: "Then back to RUN" },
+          { l: "APU RUN", a: "5 SEKUNDEN", s: "Schalter auf RUN halten" },
+          { l: "APU START", a: "2 SEKUNDEN", s: "Dann zur\u00fcck auf RUN" },
           { l: "APU RDY LIGHT", a: "VERIFY ON", v: true },
           { l: "UTIL PRES LIGHT", a: "VERIFY OFF", v: true },
-          { l: "MFDs", a: "VERIFY ON", v: true, s: "Set as required" }
+          { l: "APU GEN", a: "ON" },
+          { l: "MFD\u02bcs", a: "VERIFY ON", v: true, s: "Set as required" }
         ]
       },
       {
@@ -172,11 +172,12 @@ const phases = [
       {
         loc: "Overhead Console / Right", name: "HYD",
         items: [
-          { l: "PWR XFER 1 & PWR XFER 2", a: "BOTH ON" }
+          { l: "PWR XFER 1", a: "ON" },
+          { l: "PWR XFER 2", a: "ON" }
         ]
       },
       {
-        loc: "Flight Controls", name: "Flight Controls Check",
+        loc: "Overhead Console / Right", name: "Flight Controls",
         items: [
           { l: "COLLECTIVE", a: "CHECK", v: true },
           { l: "CYCLIC", a: "CHECK", v: true },
@@ -193,7 +194,14 @@ const phases = [
       {
         loc: "Center Console", name: "CDU",
         items: [
-          { l: "L1 (POWER) — all CDUs", a: "ALL ON" }
+          { l: "L1 (POWER) \u2014 alle CDUs", a: "ALL ON" }
+        ]
+      },
+      {
+        loc: "Overhead Console / Center", name: "FADEC",
+        items: [
+          { l: "B/U PWR", a: "ON" },
+          { l: "LOAD SHARE", a: "TRQ" }
         ]
       }
     ]
@@ -202,25 +210,19 @@ const phases = [
     id: "p3", name: "Engine 1",
     sections: [
       {
-        loc: "Overhead Console / Center", name: "FADEC",
+        loc: "Overhead Console / Center", name: "FUEL PUMP \u2014 ENG 1",
         items: [
-          { l: "B/U PWR", a: "ON" },
-          { l: "LOAD SHARE", a: "TRQ" }
-        ]
-      },
-      {
-        loc: "Overhead Console / Center", name: "FUEL PUMP — ENG 1",
-        items: [
-          { l: "ENG1 MAIN AFT & FWD", a: "BOTH ON" },
+          { l: "ENG1 MAIN AFT", a: "ON" },
+          { l: "ENG1 MAIN FWD", a: "ON" },
           { l: "XFEED", a: "OPEN" }
         ]
       },
       {
-        loc: "Engine 1 Start", name: "ENG COND / FADEC Start",
+        loc: "Overhead Console / Center", name: "Engine 1 Start",
         items: [
-          { l: "ENG COND — ENG 1", a: "GROUND" },
-          { l: "FADEC ENG START 1", a: "PRESS & HOLD", c: true, s: "Until NG ≥ 12%" },
-          { l: "MFD POWER TRAIN page — ENG 1 NG", a: "VERIFY ≥ 50%", v: true }
+          { l: "ENG COND \u2014 ENG 1", a: "GROUND" },
+          { l: "FADEC ENG START 1", a: "PRESS & HOLD", c: true, s: "Halten bis NG \u2265 12%" },
+          { l: "MFD POWER TRAIN \u2014 ENG 1 NG", a: "VERIFY \u2265 50%", v: true }
         ]
       }
     ]
@@ -229,23 +231,25 @@ const phases = [
     id: "p4", name: "Engine 2",
     sections: [
       {
-        loc: "Overhead Console / Center", name: "FUEL PUMP — ENG 2",
+        loc: "Overhead Console / Center", name: "FUEL PUMP \u2014 ENG 2",
         items: [
-          { l: "ENG2 MAIN AFT & FWD", a: "BOTH ON" }
+          { l: "ENG2 MAIN AFT", a: "ON" },
+          { l: "ENG2 MAIN FWD", a: "ON" }
         ]
       },
       {
-        loc: "Engine 2 Start", name: "ENG COND / FADEC Start",
+        loc: "Overhead Console / Center", name: "Engine 2 Start",
         items: [
-          { l: "ENG COND — ENG 2", a: "GROUND" },
-          { l: "FADEC ENG START 2", a: "PRESS & HOLD", c: true, s: "Until NG ≥ 12%" },
-          { l: "MFD POWER TRAIN page — ENG 2 NG", a: "VERIFY ≥ 50%", v: true }
+          { l: "ENG COND \u2014 ENG 2", a: "GROUND" },
+          { l: "FADEC ENG START 2", a: "PRESS & HOLD", c: true, s: "Halten bis NG \u2265 12%" },
+          { l: "MFD POWER TRAIN \u2014 ENG 2 NG", a: "VERIFY \u2265 50%", v: true }
         ]
       },
       {
-        loc: "Engine 2 Start", name: "ENG COND — Flight",
+        loc: "Overhead Console / Center", name: "ENG COND \u2014 auf FLIGHT",
         items: [
-          { l: "ENG COND ENG 1 & ENG 2", a: "FLIGHT" }
+          { l: "ENG COND ENG 1", a: "FLIGHT" },
+          { l: "ENG COND ENG 2", a: "FLIGHT" }
         ]
       }
     ]
@@ -256,7 +260,8 @@ const phases = [
       {
         loc: "Overhead Console / Left", name: "Generator & APU",
         items: [
-          { l: "GEN 1 & GEN 2", a: "ON" },
+          { l: "GEN 1", a: "ON" },
+          { l: "GEN 2", a: "ON" },
           { l: "APU GEN", a: "OFF" },
           { l: "APU", a: "OFF" }
         ]
@@ -264,18 +269,22 @@ const phases = [
       {
         loc: "Overhead Console / Right", name: "PWR XFER abschalten",
         items: [
-          { l: "PWR XFER 1 & PWR XFER 2", a: "OFF" }
+          { l: "PWR XFER 1", a: "OFF" },
+          { l: "PWR XFER 2", a: "OFF" }
         ]
       },
       {
-        loc: "Overhead Console / Center", name: "FUEL PUMP — AUX",
+        loc: "Overhead Console / Center", name: "FUEL PUMP \u2014 AUX",
         items: [
-          { l: "ENG 1 & ENG2 AUX AFT & FWD", a: "ON" },
+          { l: "ENG 1 AUX AFT", a: "ON" },
+          { l: "ENG 1 AUX FWD", a: "ON" },
+          { l: "ENG 2 AUX AFT", a: "ON" },
+          { l: "ENG 2 AUX FWD", a: "ON" },
           { l: "XFEED", a: "CLOSE" }
         ]
       },
       {
-        loc: "Overhead Console / Center", name: "FADEC — Final",
+        loc: "Overhead Console / Center", name: "FADEC \u2014 Final",
         items: [
           { l: "FADEC 1", a: "PRI" },
           { l: "FADEC 2", a: "PRI" }
